@@ -70,3 +70,12 @@ remove_duplicates(linked_list)
  
 print('The list with duplicates removed: ')
 linked_list.printInfo()
+
+
+"""
+This algorithm executes in time O(n). This is the time taken to "walk" through the 
+entire list, comparing the messages in previous and subsequent nodes in order to 
+delete duplicated messages. Memory complexity depends on the the size of the messages
+as well as the number of duplicated messaged deleted. 
+
+"""

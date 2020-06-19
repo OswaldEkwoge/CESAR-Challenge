@@ -124,3 +124,11 @@ intersection = find_intersection(list1, list2)
 print('Their intersection is: ')
 intersection.printInfo()
 print()
+
+
+"""
+Given that there are two linked lists to be compared, each with perhaps different
+sizes, the time complexity for this algorithm is O(n), where n = m * p,
+ where m is the length of  list 1 and p is the length of list 2. 
+
+"""
