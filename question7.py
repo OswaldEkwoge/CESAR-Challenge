@@ -27,8 +27,8 @@ class Solution:
             current.next = new_node
     
     
-    # printData traverses the list from the first node and prints the data of each node.
-    def printData(self):
+    # printInfo traverses the list from the first node and prints the data of each node.
+    def printInfo(self):
         current = self.head
         while current:
             print(current.data, end = ' ')
@@ -48,46 +48,51 @@ class Solution:
  
  
  # ind_intersection returns the intersection of the two linked lists passed to it
-def find_intersection(llist1, llist2):
-    if (llist1.head is None or llist2.head is None):
+def find_intersection(list1, list2):
+    if (list1.head is None or list2.head is None):
         return Solution()
 
     intersection = Solution()    # create a new linked list class called intersection
 
     # get the length of both lists
-    len_llist1 = llist1.getCount()
-    len_llist2 = llist2.getCount()
+    len_list1 = list1.getCount()
+    len_list2 = list2.getCount()
     count = 0
-    current1 = llist1.head
-    current2 = llist2.head
+    current1 = list1.head
+    current2 = list2.head
 
     # calculate the difference with both lists
-    if (len_llist1 >= len_llist2):
-        diff = len_llist1 - len_llist2
-        while (count < diff):
+    # if length of list is is greater than that of list2, move list 1 until it's length
+    # becomes equal to that of list 2
+    if (len_list1 >= len_list2):
+        diff = len_list1 - len_list2  # difference between list 1 and list2
+        while (count < diff):           # while list one remains longer than list 2, move list 1
             current1 = current1.next
             count = count + 1
 
-        while (current1 is not None and current2 is not None):              # while current1 is not NULL...
+        # while lists 1 and 2 are not NULL....check if both lists at position[i] are the same
+        while (current1 is not None and current2 is not None):    
             data = current1.data     # variable "data" will receive the data in head
 
+            # if data in list 1 is same as in list2, create a new node and insert this data
             if data == current2.data:
                 node = Node(data)
-                intersection.insert_at_end(node)
+                intersection.insert_at_end(node)   # call function to insert node at the end
                                               
-                break
+                break            # once we find the first data in common, no need to continue
             else:
-                current2 = current2.next
+                current2 = current2.next   # move both lists to the next position
                 current1 = current1.next
-        return intersection
+        return intersection                # return intersection of both lists
 
+    # if list 2 is longer than list 1, do similar to the previous section
     else:
-        diff = len_llist2 - len_llist1
+        diff = len_list2 - len_list1
         while (count < diff):
             current2 = current2.next
             count = count + 1
 
-        while (current2 is not None and current1 is not None):              # while current1 is not NULL...
+        while (current2 is not None and current1 is not None):  # while current1 is not NULL...
             data = current2.data     # variable "data" will receive the data in head
 
             if data == current1.data:
@@ -101,21 +106,21 @@ def find_intersection(llist1, llist2):
         return intersection
  
  
-a_llist1 = Solution()
-a_llist2 = Solution()
+list1 = Solution()
+list2 = Solution()
 data_list = input('Please enter the elements in the first linked list: ').split()
 for data in data_list:
     node = Node(data)
-    a_llist1.insert_at_end(node)
+    list1.insert_at_end(node)
 data_list = input('Please enter the elements in the second linked list: ').split()
 for data in data_list:
     node = Node(data)
-    a_llist2.insert_at_end(node)
+    list2.insert_at_end(node)
  
 
-intersection = find_intersection(a_llist1, a_llist2)
+intersection = find_intersection(list1, list2)
  
 
-print('Their intersection: ')
-intersection.printData()
+print('Their intersection is: ')
+intersection.printInfo()
 print()
