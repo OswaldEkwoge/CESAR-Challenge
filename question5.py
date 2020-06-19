@@ -4,13 +4,13 @@ class Node:
         self.data = message
         self.next = None
  
-# Create a class LinkedList with instance variable head. 
-class LinkedList:
+# Create a class Solution with instance variable head. 
+class Solution:
     def __init__(self):
         self.head = None
         self.last_node = None
  
-    # Create an instance of the LinkedList and append message entered by user to it
+    # Create an instance of the Solution and append message entered by user to it
     def append(self, message):
         if self.last_node is None:
             self.head = Node(message)   
@@ -35,38 +35,38 @@ class LinkedList:
         else:
             prev_node.next = node.next
  
-    # display traverses the list from the first node and prints the data of each node.
-    def display(self):
+    # printInfo traverses the list from the first node and prints the data of each node.
+    def printInfo(self):
         current = self.head
         while current:
             print(current.data, end = ' ')
             current = current.next
  
  # function to remove duplicates from the list
-def remove_duplicates(llist):
-    current1 = llist.head
+def remove_duplicates(linkedList):
+    current1 = linkedList.head
     while current1:
         data = current1.data
         current2 = current1.next
         while current2:
             if current2.data == data:
-                llist.remove(current2)
+                linkedList.remove(current2)
             current2 = current2.next
         current1 = current1.next
  
  
-a_llist = LinkedList()
+linked_list = Solution()
 
 count = 1
 while(count==1):
     data_list = input('Please enter the messages separated by double space: ').split()
     for message in data_list:
-        a_llist.append(message)
+        linked_list.append(message)
     count = input("Do you want to exit? yes/no (1/0)")
     count = int(count)
 
  
-remove_duplicates(a_llist)
+remove_duplicates(linked_list)
  
 print('The list with duplicates removed: ')
-a_llist.display()
+linked_list.printInfo()
